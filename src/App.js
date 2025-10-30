@@ -7,7 +7,7 @@ import Modal from './Modal'
 function App() {
   const {waiting, loading,questions,index,correct,nextQuestion,checkAnswer} = useGlobalContext()
   if (waiting) {
-    
+   
     return <SetupForm />
   }
   if (loading) {
@@ -35,5 +35,14 @@ function App() {
     </section>
   </main>
 }
+
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.answer-btn');
+  if (!btn) return;
+  btn.classList.add('pulse');
+  setTimeout(() => btn.classList.remove('pulse'), 300);
+});
+
 
 export default App
